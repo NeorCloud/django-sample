@@ -1,7 +1,7 @@
 django sample
 =============
 
-Behold My Awesome Project!
+NeorCloud sample django project
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter
      :target: https://github.com/cookiecutter/cookiecutter-django/
