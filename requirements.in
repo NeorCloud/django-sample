@@ -1,0 +1,27 @@
+python-slugify
+Pillow
+whitenoise
+argon2-cffi
+redis
+hiredis
+celery
+django-celery-beat
+flower
+uvicorn[standard]
+#Django
+django
+django-environ
+django-model-utils
+django-allauth
+django-crispy-forms
+crispy-bootstrap5
+django-compressor
+django-redis
+django-anymail
+# Django REST Framework
+djangorestframework
+django-cors-headers
+# Production
+gunicorn
+psycopg2
+sentry-sdk
