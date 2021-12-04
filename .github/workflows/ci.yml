@@ -53,4 +53,4 @@ jobs:
       - name: Deploy service
         env:
           TOKEN: ${{ secrets.NEOR_TOKEN }}
-        run : neorcli -t $TOKEN update 274 --tag $RELEASE_VERSION
+        run : neorcli -t $TOKEN update ${{ secrets.NEOR_SERVICE_ID }} --tag $RELEASE_VERSION
