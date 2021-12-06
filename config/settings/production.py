@@ -19,6 +19,18 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["neorcloud.com"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
+if not env("DATABASE_URL", default=None):
+    env.set(
+        "DATABASE_URL",
+        "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}".format(
+            POSTGRES_USER=env("POSTGRES_USER"),
+            POSTGRES_PASSWORD=env("POSTGRES_PASSWORD"),
+            POSTGRES_HOST=env("POSTGRES_HOST"),
+            POSTGRES_PORT=env("POSTGRES_PORT", default="5432"),
+            POSTGRES_DB=env("POSTGRES_DB")
+        )
+    )
+
 DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
 DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
 DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
@@ -142,7 +154,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+                      "%(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
